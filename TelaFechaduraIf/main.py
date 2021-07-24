@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 import json
+from sys import platform
 
 app = tk.Tk()
 app.geometry("480x360")
@@ -12,7 +13,10 @@ def write():
         child.destroy()
 
     try:
-        f = open('input.json','r')
+        if platform == "linux":
+            f = open('/home/pi/FechaduraIfrs/TelaFechaduraIf/input.json','r')
+        else:
+            f = open('input.json','r')
         input = json.load(f)
         
         label = tk.Label(
