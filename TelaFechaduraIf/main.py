@@ -16,15 +16,16 @@ def write():
         input = json.load(f)
         
         label = tk.Label(
+        cursor='none',
         text=input['msg'],
         foreground=input['color'],  # Set the text color to white
         background="black",  # Set the background color to black
         font=('normal',input['size'])
         ).place(relx=.5,rely=.5,anchor='center')
         f.close()
-        app.after(200, write)
-    except:
-        print("Formato de Input Invalido!")
+        app.after(500, write)
+    except Exception as e:
+        print(e)
         app.after(2000, write)
 
     
